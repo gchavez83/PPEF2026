@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Presupuestal Yucatan 2026 vs 2025</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        h2 {
+            color: #2c3e50;
+            border-left: 4px solid #e74c3c;
+            padding-left: 20px;
+            margin-top: 40px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            font-size: 1.4em;
+        }
+        h4 {
+            color: #2980b9;
+            margin-top: 25px;
+            font-size: 1.2em;
+        }
+        .methodology {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .executive-summary {
+            background: linear-gradient(135deg, #fff5f5 0%, #fce4e4 100%);
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #fef9e7 0%, #fcf4a3 100%);
+            border-left: 5px solid #f39c12;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .alert-box {
+            background: linear-gradient(135deg, #fdf2f2 0%, #fce4e4 100%);
+            border-left: 5px solid #e74c3c;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .growth-box {
+            background: linear-gradient(135deg, #e8f6f3 0%, #d5f4e6 100%);
+            border-left: 5px solid #1abc9c;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .infra-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        th {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .positive {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .negative {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .neutral {
+            color: #34495e;
+            font-weight: bold;
+        }
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 10px;
+            border-top: 4px solid #e74c3c;
+        }
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .metric-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .ramo-detail {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .ramo-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        .ramo-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .data-item {
+            background: white;
+            padding: 8px;
+            border-radius: 3px;
+            border-left: 3px solid #e74c3c;
+        }
+        .source {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .conclusions {
+            background: linear-gradient(135deg, #fdf2f2 0%, #fce4e4 100%);
+            border: 2px solid #e74c3c;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        .warning-box {
+            background: #fff5f5;
+            border-left: 5px solid #e53e3e;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Analisis Presupuestal Yucatan 2026</h1>
+        <div class="subtitle">Comparativa con Presupuesto 2025 | Analisis de Contraccion Fiscal</div>
+        <div class="subtitle">Gobierno del Estado de Yucatan | Secretaria de Administracion y Finanzas</div>
+    </div>
+
+    <div class="container">
+        <div class="methodology">
+            <h3 style="color: white; margin-top: 0;">Metodologia del Analisis</h3>
+            <ul style="color: white;">
+                <li><strong>Deflactor PIB:</strong> 4.8% (Criterios de Politica Economica 2026)</li>
+                <li><strong>Analisis:</strong> Comparacion nominal y real entre ejercicios fiscales</li>
+                <li><strong>Fuente:</strong> Modelo Semantico realizado basado en las bases de datos disponibles en Datos Abiertos de Transparencia Presupuestaria</li>
+            </ul>
+        </div>
+
+        <div class="executive-summary">
+            <h3 style="margin-top: 0;">Resumen Ejecutivo - Contraccion Presupuestal</h3>
+            <p>El presupuesto federal para Yucatan en 2026 presenta una <strong>contraccion del 6.0% nominal</strong>, equivalente a <strong>$8.7 mil millones menos</strong> respecto a 2025. En terminos reales (considerando inflacion), la reduccion alcanza <strong>-10.3%</strong>, representando el mayor ajuste fiscal en anos recientes.</p>
+            <p><strong>Impacto principal:</strong> Los sectores mas afectados son Entidades no Sectorizadas (-99.6%), Petroleos Mexicanos (-66.2%) y programas de Bienestar (-24.7%).</p>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">$146.5 mil millones</div>
+                <div class="metric-label">Presupuesto Total 2025</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value negative">$137.8 mil millones</div>
+                <div class="metric-label">Presupuesto Total 2026</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value negative">-6.0%</div>
+                <div class="metric-label">Variacion Nominal</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value negative">-10.3%</div>
+                <div class="metric-label">Variacion Real</div>
+            </div>
+        </div>
+
+        <h2>Programas Presupuestarios con Mayores Incrementos</h2>
+
+        <div class="growth-box">
+            <h4>TOP 10 PROGRAMAS CON MAYOR CRECIMIENTO</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Programa Presupuestario</th>
+                        <th>Ramo</th>
+                        <th>2025 (millones)</th>
+                        <th>2026 (millones)</th>
+                        <th>Variacion Nominal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Infraestructura ferroviaria para el transporte de carga y pasajeros</td>
+                        <td>Ramo 07: Defensa Nacional</td>
+                        <td>$0.0</td>
+                        <td>$30,000.0</td>
+                        <td class="positive">NUEVO</td>
+                    </tr>
+                    <tr>
+                        <td>Servicios de atencion a la salud</td>
+                        <td>Ramo 56: IMSS-Bienestar</td>
+                        <td>$0.0</td>
+                        <td>$930.1</td>
+                        <td class="positive">NUEVO</td>
+                    </tr>
+                    <tr>
+                        <td>Investigacion, desarrollo tecnologico y formacion en salud</td>
+                        <td>Ramo 56: IMSS-Bienestar</td>
+                        <td>$0.0</td>
+                        <td>$192.7</td>
+                        <td class="positive">NUEVO</td>
+                    </tr>
+                    <tr>
+                        <td>FORTAMUN</td>
+                        <td>Ramo 33: Aportaciones Federales</td>
+                        <td>$2,264.0</td>
+                        <td>$2,473.0</td>
+                        <td class="positive">+9.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Otros conceptos participables e incentivos economicos</td>
+                        <td>Ramo 28: Participaciones</td>
+                        <td>$4,943.3</td>
+                        <td>$5,528.1</td>
+                        <td class="positive">+11.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Fondo General de Participaciones</td>
+                        <td>Ramo 28: Participaciones</td>
+                        <td>$17,117.8</td>
+                        <td>$18,271.2</td>
+                        <td class="positive">+6.7%</td>
+                    </tr>
+                    <tr>
+                        <td>FAFEF</td>
+                        <td>Ramo 33: Aportaciones Federales</td>
+                        <td>$1,266.3</td>
+                        <td>$1,376.6</td>
+                        <td class="positive">+8.7%</td>
+                    </tr>
+                    <tr>
+                        <td>FASSA</td>
+                        <td>Ramo 33: Aportaciones Federales</td>
+                        <td>$2,754.4</td>
+                        <td>$2,870.1</td>
+                        <td class="positive">+4.2%</td>
+                    </tr>
+                    <tr>
+                        <td>FAM Asistencia Social</td>
+                        <td>Ramo 33: Aportaciones Federales</td>
+                        <td>$417.6</td>
+                        <td>$443.3</td>
+                        <td class="positive">+6.2%</td>
+                    </tr>
+                    <tr>
+                        <td>FONE Servicios Personales</td>
+                        <td>Ramo 33: Aportaciones Federales</td>
+                        <td>$8,086.9</td>
+                        <td>$8,381.1</td>
+                        <td class="positive">+3.6%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Programas Presupuestarios con Mayores Decrementos</h2>
+
+        <div class="alert-box">
+            <h4>TOP 10 PROGRAMAS CON MAYOR REDUCCION</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Programa Presupuestario</th>
+                        <th>Ramo</th>
+                        <th>2025 (millones)</th>
+                        <th>2026 (millones)</th>
+                        <th>Variacion Nominal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Provisiones para la construccion y fortalecimiento de infraestructura</td>
+                        <td>Ramo 07: Defensa Nacional</td>
+                        <td>$40,000.0</td>
+                        <td>$0.0</td>
+                        <td class="negative">-100.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Administracion de los contratos de produccion independiente de energia CFE Generacion V</td>
+                        <td>Ramo 53: CFE</td>
+                        <td>$7,830.6</td>
+                        <td>$0.0</td>
+                        <td class="negative">-100.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Servicios medicos al personal de PEMEX</td>
+                        <td>Ramo 52: Petroleos Mexicanos</td>
+                        <td>$322.2</td>
+                        <td>$10.0</td>
+                        <td class="negative">-96.9%</td>
+                    </tr>
+                    <tr>
+                        <td>Actividades de apoyo Administrativo</td>
+                        <td>Ramo 52: Petroleos Mexicanos</td>
+                        <td>$305.5</td>
+                        <td>$44.8</td>
+                        <td class="negative">-85.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Actividades de apoyo Administrativo</td>
+                        <td>Ramo 51: ISSSTE</td>
+                        <td>$160.3</td>
+                        <td>$525.6</td>
+                        <td class="positive">+227.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Actualizacion del padron electoral y expedicion de la credencial para votar</td>
+                        <td>Ramo 22: INE</td>
+                        <td>$70.1</td>
+                        <td>$58.0</td>
+                        <td class="negative">-17.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Capacitacion y educacion para el ejercicio democratico</td>
+                        <td>Ramo 22: INE</td>
+                        <td>$54.3</td>
+                        <td>$29.4</td>
+                        <td class="negative">-46.0%</td>
+                    </tr>
+                    <tr>
+                        <td>FAIS Municipal y de las Demarcaciones Territoriales</td>
+                        <td>Ramo 33: Aportaciones Federales</td>
+                        <td>$2,336.8</td>
+                        <td>$2,262.5</td>
+                        <td class="negative">-3.2%</td>
+                    </tr>
+                    <tr>
+                        <td>FAIS Entidades</td>
+                        <td>Ramo 33: Aportaciones Federales</td>
+                        <td>$322.3</td>
+                        <td>$312.1</td>
+                        <td class="negative">-3.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Censo Agropecuario</td>
+                        <td>Ramo 40: INEGI</td>
+                        <td>$23.2</td>
+                        <td>$0.4</td>
+                        <td class="negative">-98.3%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Programas de Inversion en Infraestructura (Modalidad K)</h2>
+
+        <div class="infra-box">
+            <h4>PROYECTOS DE INVERSION CON INCREMENTOS</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Programa de Infraestructura</th>
+                        <th>Ramo</th>
+                        <th>2025 (millones)</th>
+                        <th>2026 (millones)</th>
+                        <th>Variacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Infraestructura ferroviaria para el transporte de carga y pasajeros</td>
+                        <td>Ramo 07: Defensa Nacional</td>
+                        <td>$0.0</td>
+                        <td>$30,000.0</td>
+                        <td class="positive">NUEVO</td>
+                    </tr>
+                    <tr>
+                        <td>Infraestructura economica de electricidad</td>
+                        <td>Ramo 53: CFE</td>
+                        <td>$0.0</td>
+                        <td>$1,300.4</td>
+                        <td class="positive">NUEVO</td>
+                    </tr>
+                    <tr>
+                        <td>Infraestructura integral para el derecho a la salud</td>
+                        <td>Ramo 50: IMSS</td>
+                        <td>$0.0</td>
+                        <td>$118.0</td>
+                        <td class="positive">NUEVO</td>
+                    </tr>
+                    <tr>
+                        <td>Infraestructura integral para el derecho a la salud</td>
+                        <td>Ramo 51: ISSSTE</td>
+                        <td>$0.0</td>
+                        <td>$1.1</td>
+                        <td class="positive">NUEVO</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="alert-box">
+            <h4>PROYECTOS DE INVERSION CON DECREMENTOS</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Programa de Infraestructura</th>
+                        <th>Ramo</th>
+                        <th>2025 (millones)</th>
+                        <th>2026 (millones)</th>
+                        <th>Variacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Proyectos de infraestructura social de asistencia y seguridad social</td>
+                        <td>Ramo 50: IMSS</td>
+                        <td>$814.8</td>
+                        <td>$0.0</td>
+                        <td class="negative">-100.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Mantenimiento de Infraestructura</td>
+                        <td>Ramo 53: CFE</td>
+                        <td>$784.7</td>
+                        <td>$0.0</td>
+                        <td class="negative">-100.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Programas de adquisiciones</td>
+                        <td>Ramo 50: IMSS</td>
+                        <td>$153.8</td>
+                        <td>$0.0</td>
+                        <td class="negative">-100.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Proyectos de infraestructura economica de electricidad</td>
+                        <td>Ramo 53: CFE</td>
+                        <td>$142.8</td>
+                        <td>$0.0</td>
+                        <td class="negative">-100.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Programas de adquisiciones</td>
+                        <td>Ramo 53: CFE</td>
+                        <td>$33.6</td>
+                        <td>$0.0</td>
+                        <td class="negative">-100.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Proyectos de infraestructura social</td>
+                        <td>Ramo 51: ISSSTE</td>
+                        <td>$13.2</td>
+                        <td>$0.0</td>
+                        <td class="negative">-100.0%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Analisis Detallado por Ramo Presupuestario</h2>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 3: Poder Judicial</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $40.1 millones</div>
+                <div class="data-item"><strong>2026:</strong> $43.9 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="positive">+9.5%</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="positive">+4.5%</span></div>
+            </div>
+        </div>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 6: Hacienda y Credito Publico</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $2.1 millones</div>
+                <div class="data-item"><strong>2026:</strong> $2.4 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="positive">+13.8%</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="positive">+8.6%</span></div>
+            </div>
+        </div>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 7: Defensa Nacional</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $41,554.0 millones</div>
+                <div class="data-item"><strong>2026:</strong> $31,372.4 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="negative">-24.5%</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="negative">-28.0%</span></div>
+            </div>
+        </div>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 13: Marina</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $469.5 millones</div>
+                <div class="data-item"><strong>2026:</strong> $480.2 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="positive">+2.3%</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="negative">-2.4%</span></div>
+            </div>
+        </div>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 28: Participaciones a Entidades Federativas</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $23,202.3 millones</div>
+                <div class="data-item"><strong>2026:</strong> $24,957.8 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="positive">+7.6%</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="positive">+2.7%</span></div>
+            </div>
+        </div>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 33: Aportaciones Federales</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $18,134.8 millones</div>
+                <div class="data-item"><strong>2026:</strong> $19,135.3 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="positive">+5.5%</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="positive">+0.7%</span></div>
+            </div>
+        </div>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 50: Instituto Mexicano del Seguro Social</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $28,333.1 millones</div>
+                <div class="data-item"><strong>2026:</strong> $30,258.2 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="positive">+6.8%</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="positive">+1.9%</span></div>
+            </div>
+        </div>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 51: ISSSTE</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $9,732.9 millones</div>
+                <div class="data-item"><strong>2026:</strong> $9,683.4 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="negative">-0.5%</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="negative">-4.6%</span></div>
+            </div>
+        </div>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 52: Petroleos Mexicanos</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $649.8 millones</div>
+                <div class="data-item"><strong>2026:</strong> $292.1 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="negative">-55.0%</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="negative">-57.6%</span></div>
+            </div>
+        </div>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 53: Comision Federal de Electricidad</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $12,985.6 millones</div>
+                <div class="data-item"><strong>2026:</strong> $14,974.2 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="positive">+15.3%</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="positive">+10.0%</span></div>
+            </div>
+        </div>
+
+        <div class="ramo-detail">
+            <div class="ramo-title">RAMO 56: IMSS-Bienestar (NUEVO)</div>
+            <div class="ramo-data">
+                <div class="data-item"><strong>2025:</strong> $0.0 millones</div>
+                <div class="data-item"><strong>2026:</strong> $1,159.2 millones</div>
+                <div class="data-item"><strong>Var. Nominal:</strong> <span class="positive">NUEVO RAMO</span></div>
+                <div class="data-item"><strong>Var. Real:</strong> <span class="positive">NUEVO RAMO</span></div>
+            </div>
+        </div>
+
+        <h2>Principales Hallazgos</h2>
+
+        <div class="growth-box">
+            <h4>TOP 5 RAMOS CON MAYORES INCREMENTOS (Nominal)</h4>
+            <ol>
+                <li><strong>Comision Federal de Electricidad:</strong> +15.3%</li>
+                <li><strong>Hacienda y Credito Publico:</strong> +13.8%</li>
+                <li><strong>Poder Judicial:</strong> +9.5%</li>
+                <li><strong>Participaciones a Entidades Federativas:</strong> +7.6%</li>
+                <li><strong>Instituto Mexicano del Seguro Social:</strong> +6.8%</li>
+            </ol>
+        </div>
+
+        <div class="alert-box">
+            <h4>TOP 5 RAMOS CON MAYORES DECREMENTOS (Nominal)</h4>
+            <ol>
+                <li><strong>Petroleos Mexicanos:</strong> <span class="negative">-55.0%</span></li>
+                <li><strong>Defensa Nacional:</strong> <span class="negative">-24.5%</span></li>
+                <li><strong>Agricultura y Desarrollo Rural:</strong> <span class="negative">-3.5%</span></li>
+                <li><strong>Marina:</strong> <span class="positive">+2.3%</span> (crecimiento menor)</li>
+                <li><strong>ISSSTE:</strong> <span class="negative">-0.5%</span></li>
+            </ol>
+        </div>
+
+        <div class="highlight-box">
+            <h4>CONCENTRACION DEL PRESUPUESTO 2026</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posicion</th>
+                        <th>Ramo</th>
+                        <th>Monto 2026</th>
+                        <th>Participacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Defensa Nacional</td>
+                        <td>$31,372 millones</td>
+                        <td class="neutral">22.8%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Instituto Mexicano del Seguro Social</td>
+                        <td>$30,258 millones</td>
+                        <td class="neutral">22.0%</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Participaciones a Entidades Federativas</td>
+                        <td>$24,958 millones</td>
+                        <td class="neutral">18.1%</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Aportaciones Federales</td>
+                        <td>$19,135 millones</td>
+                        <td class="neutral">13.9%</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Comision Federal de Electricidad</td>
+                        <td>$14,974 millones</td>
+                        <td class="neutral">10.9%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Concentracion:</strong> Los primeros 4 ramos concentran el <strong>76.8%</strong> del presupuesto total para Yucatan.</p>
+        </div>
+
+        <h2>Analisis de Impacto Sectorial</h2>
+
+        <div class="conclusions">
+            <h3>Conclusiones Clave</h3>
+            <ol>
+                <li><strong>Contraccion General:</strong> El presupuesto total para Yucatan disminuye 6.0% nominal y 10.3% real, evidenciando un ajuste fiscal significativo.</li>
+                
+                <li><strong>Transformacion del Gasto en Infraestructura:</strong>
+                    <ul>
+                        <li>Eliminacion de proyectos tradicionales de CFE e IMSS por $1,935 millones</li>
+                        <li>Creacion masiva del proyecto ferroviario Tren Maya por $30,000 millones</li>
+                        <li>Nueva infraestructura electrica por $1,300 millones</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Sectores Mas Afectados:</strong>
+                    <ul>
+                        <li><strong>Petroleos Mexicanos</strong> (-55.0%): Reduccion drastica en servicios medicos</li>
+                        <li><strong>Defensa Nacional</strong> (-24.5%): A pesar de la reduccion, mantiene 22.8% del presupuesto</li>
+                        <li><strong>Programas Electorales:</strong> INE sufre recortes importantes (-17.3% a -46.0%)</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Sectores con Crecimiento:</strong>
+                    <ul>
+                        <li><strong>Comision Federal de Electricidad</strong> (+15.3%): Mayor inversion en infraestructura electrica</li>
+                        <li><strong>Participaciones Federales</strong> (+7.6%): Transferencias a estados mantienen crecimiento</li>
+                        <li><strong>IMSS</strong> (+6.8%): Consolidacion del sistema de salud</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Nuevo Modelo de Salud:</strong>
+                    <ul>
+                        <li>Aparece el <strong>Ramo 56</strong> (IMSS-Bienestar) con $1,159 millones</li>
+                        <li>Programas de investigacion en salud por $193 millones</li>
+                        <li>Fortalecimiento a la atencion medica por $17 millones</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="warning-box">
+            <h3>Implicaciones para Yucatan</h3>
+            
+            <h4>Impactos Positivos:</h4>
+            <ul>
+                <li><strong>Megaproyecto Tren Maya:</strong> $30,000 millones representan inversión histórica en conectividad</li>
+                <li><strong>Fortalecimiento del IMSS:</strong> +$1,925 millones para servicios de salud</li>
+                <li><strong>Mayor infraestructura eléctrica:</strong> +$1,300 millones en proyectos energéticos</li>
+                <li><strong>Participaciones federales:</strong> +$1,756 millones en transferencias directas</li>
+            </ul>
+
+            <h4>Desafios:</h4>
+            <ul>
+                <li><strong>Reduccion PEMEX:</strong> -$358 millones impacta servicios del sector petrolero</li>
+                <li><strong>Menor inversion social tradicional:</strong> FAIS reduce -$85 millones</li>
+                <li><strong>Eliminacion proyectos CFE:</strong> -$1,935 millones en infraestructura tradicional</li>
+                <li><strong>Dependencia del Tren Maya:</strong> 21.8% del presupuesto concentrado en un solo proyecto</li>
+            </ul>
+        </div>
+
+        <div class="growth-box">
+            <h3>Recomendaciones Estrategicas</h3>
+            <ol>
+                <li><strong>Maximizar beneficios del Tren Maya:</strong> Coordinar con autoridades federales para asegurar derramas económicas locales</li>
+                <li><strong>Aprovechar crecimiento del IMSS:</strong> Fortalecer coordinación para mejorar cobertura de salud estatal</li>
+                <li><strong>Compensar reducciones:</strong> Buscar recursos estatales para sectores afectados como infraestructura social</li>
+                <li><strong>Monitorear Ramo 56:</strong> Seguimiento especial a la implementación del IMSS-Bienestar</li>
+                <li><strong>Diversificar infraestructura:</strong> No depender únicamente de proyectos federales para desarrollo</li>
+            </ol>
+        </div>
+
+        <div class="methodology">
+            <h2 style="color: white;">Metodologia Tecnica</h2>
+            
+            <h3 style="color: white;">Calculos Realizados:</h3>
+            <ul style="color: white;">
+                <li><strong>Variacion Nominal:</strong> ((P2026/P2025) - 1) x 100</li>
+                <li><strong>Deflactacion:</strong> P2025 x (1 + 0.048) = P2025 en pesos de 2026</li>
+                <li><strong>Variacion Real:</strong> ((P2026/P2025_deflactado) - 1) x 100</li>
+            </ul>
+
+            <h3 style="color: white;">Fuentes:</h3>
+            <ul style="color: white;">
+                <li><strong>Modelo PEF_IA:</strong> Fabric workspace fabric_trial</li>
+                <li><strong>Deflactor PIB:</strong> Criterios de Politica Economica 2026 (4.8%)</li>
+                <li><strong>Periodo:</strong> Ejercicios Fiscales 2025-2026</li>
+                <li><strong>Entidad:</strong> Yucatan (ID: 31)</li>
+            </ul>
+        </div>
+
+        <div class="source">
+            <p><strong>Fuente:</strong> Modelo Semantico PEF_IA basado en las bases de datos disponibles en Datos Abiertos de Transparencia Presupuestaria | Secretaria de Hacienda y Credito Publico</p>
+            <p><strong>Elaborado por:</strong> Secretaria de Administracion y Finanzas del Estado de Yucatan</p>
+            <p><strong>Fecha de elaboracion:</strong> Septiembre 2025</p>
+            <p><strong>Modelo utilizado:</strong> Analisis semantico con Microsoft Fabric - Workspace: fabric_trial</p>
+            <p><em>Analisis elaborado basado en el modelo semantico PEF_IA del Presupuesto de Egresos de la Federacion</em></p>
+        </div>
+    </div>
+</body>
+</html>
